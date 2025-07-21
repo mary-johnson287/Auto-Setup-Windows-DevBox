@@ -1,0 +1,14 @@
+name: Auto Setup Windows DevBox
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup-dev:
+    runs-on: self-hosted
+    steps:
+      - name: Download Script
+        run: Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mary-johnson287/Auto-Setup-Windows-DevBox/main/full-setup.ps1" -OutFile "install.ps1"
+
+      - name: Run Script
+        run: powershell.exe -ExecutionPolicy Bypass -File install.ps1
